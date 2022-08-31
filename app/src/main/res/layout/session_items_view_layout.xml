@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+>
+    <data>
+        <import type="android.view.View"/>
+        <variable name="sessionItem" type="cz.tipsport.lottery.android.SessionItemModel"/>
+    </data>
+<LinearLayout android:layout_width="match_parent" android:layout_height="match_parent"
+              android:orientation="horizontal" android:weightSum="100"
+>
+    <ImageButton
+            android:src="@drawable/ic_baseline_cancel_48"
+            android:layout_width="60dp" android:layout_height="60dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            android:gravity="center"
+            android:background="@null"
+            android:visibility="@{sessionItem.cancellable ? View.VISIBLE: View.INVISIBLE}"
+    >
+
+
+    </ImageButton>
+
+    <LinearLayout android:orientation="vertical"
+                  android:layout_width="match_parent" android:layout_height="match_parent"
+                  android:layout_weight="30"
+    >
+        <TextView android:id="@+id/textViewIssueName"
+                  android:text="@{sessionItem.description}"
+                  android:layout_width="match_parent" android:layout_height="30dp"
+                  android:textAlignment="textStart"
+        ></TextView>
+        <TextView android:id="@+id/textViewLogisticNumber"
+                  android:text="@{sessionItem.additionalDescription}"
+                  android:layout_width="match_parent" android:layout_height="30dp"
+                  android:layout_below="@+id/textViewIssueName"
+                  android:textAlignment="textStart"
+        ></TextView>
+    </LinearLayout>
+
+    <TextView android:id="@+id/textViewTotalPrice"
+              android:text='@{sessionItem.totalPrice + " Kč"}'
+              android:layout_width="match_parent" android:layout_height="60dp"
+              android:layout_weight="70"
+              android:textAlignment="textEnd"
+    ></TextView>
+</LinearLayout>
+</layout>
